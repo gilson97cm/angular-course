@@ -1,0 +1,39 @@
+<div class="container-fluid m-5">
+    <h1>Contact</h1>
+    
+    <form [formGroup]="formContact" (ngSubmit)="sendForm()">
+    
+    
+        <fieldset class="form-group">
+            <label for="name">Name</label>
+            <input type="text" class="form-control" id="name" formControlName="name">
+    
+            <div *ngIf="!formContact.controls['name'].valid && formContact.controls['name'].touched">
+                <span class="text-danger" *ngIf="formContact.controls['name'].errors['required']">
+                    El campo es requerido.
+                </span>
+                <span class="text-danger" *ngIf="formContact.controls['name'].errors['pattern']">
+                    El campo debe ser minimo de 4 caracteres.
+                </span>
+            </div>
+        </fieldset>
+    
+        <fieldset class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" id="email" formControlName="email">
+    
+            <!-- <div *ngIf="!formControl.controls['email'].valid && formControl.controls['email'].touched">
+                <span class="text-danger" *ngIf="formContact.controls['email'].errors['required']">
+                    El campo es requerido.
+                </span>
+                <span class="text-danger" *ngIf="formContact.controls['email'].errors['pattern']">
+                    El campo debe ser minimo de 4 caracteres.
+                </span>
+            </div> -->
+        </fieldset>
+    
+        <button type="submit" class="mt-2 btn btn-primary" 
+        [disabled]="!formContact.valid">Send Form</button>
+    
+    </form>
+</div>

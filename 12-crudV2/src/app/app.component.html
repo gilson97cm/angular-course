@@ -1,0 +1,116 @@
+<div class="container p-2">
+  <div class="row">
+    <!--    TABLE-->
+    <div class="col-md-7">
+      <div class="card">
+        <div class="card-header d-flex justify-content-between">
+          <h5 class="card-title">
+            Contact List
+          </h5>
+          <button type="button" class="btn btn-sm btn-outline-success m-1" (click)="showContact('store')">New</button>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-sm table-striped">
+              <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th colspan="3">Actions</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr *ngFor="let item of contacts">
+                <td>{{item.name}}&nbsp;{{item.lastName}}</td>
+                <td>{{item.email}}</td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-outline-primary"
+                          (click)="showContact( 'show',item.id)">More</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-outline-info"
+                          (click)="editContact(item.id)">Edit</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-sm btn-outline-danger" (click)="deleteContact(item.id)">Delete</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    FORM-->
+    <div class="col-md-5" *ngIf="status === 'show'">
+      <div class="card">
+        <div class="card-header">
+          <h5>Show Contact</h5>
+        </div>
+        <div class="card-body">
+          <div *ngFor="let item of contacts">
+            <div *ngIf="item.id == currentId">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  Name: <h5>{{item.name}}&nbsp;{{item.lastName}}</h5>
+                </li>
+                <li class="list-group-item">
+                  Email: <h5>{{item.email}}</h5>
+                </li>
+                <li class="list-group-item">
+                  StartDate: <h5>{{item.startDate}}</h5>
+                </li>
+              </ul>
+
+              <div class="btn-group float-right" role="button">
+                <button type="button" class="btn btn-sm btn-outline-warning m-1" (click)="showContact( 'update',item.id)">Edit</button>
+                <button type="button" class="btn btn-sm btn-outline-danger m-1" (click)="deleteContact(item.id)">Delete</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-5" *ngIf="status === 'store' || status === 'update'">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="card-title">
+            {{status === 'store' ? 'Store' : (status === 'update' ? 'Update': '') }} Contact Form
+          </h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="formContact" (submit)="storeUpdateContact()" >
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Name" formControlName="name">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Email" formControlName="email">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="Start Date" formControlName="startDate">
+              </div>
+            </div>
+            <div class="btn-group float-right" role="button">
+              <div *ngIf="status === 'store'">
+                <button type="submit" class="btn btn-sm btn-outline-warning m-1">Save</button>
+                <button type="button" class="btn btn-sm btn-outline-danger m-1" (click)="showContact('cancel')" >Cancel</button>
+              </div>
+              <div *ngIf="status === 'update'">
+                <button type="submit" class="btn btn-sm btn-outline-info m-1">Update</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</div>

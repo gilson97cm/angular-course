@@ -1,0 +1,70 @@
+<!-- FORMULARIOS IMPLICITOS -->
+<!-- <form class="mt-5" (ngSubmit)="sendForm(form)" #form="ngForm"> -->
+    <!-- <fieldset class="form-group">
+        <label for="name">Name</label>
+        <input  type="text" 
+                class="form-control"
+                id="name"
+                [ngModel]="student.name"
+                name="name"
+                #name="ngModel"
+                minlength="5"
+                required> -->
+                <!-- {{name.errors | json}} -->
+                <!-- <div *ngIf="name.touched && name.errors">
+                    <span class="text-danger" *ngIf="name.errors.required">
+                        Campo obligatorio
+                    </span>
+                    <span class="text-danger" *ngIf="name.errors.minlength">
+                        El número mínimo de caracteres es 5.
+                    </span>
+                </div>
+       
+    </fieldset> -->
+
+    <!-- <fieldset class="form-group">
+        <label for="email">Email</label>
+        <input  type="text" 
+                class="form-control" 
+                id="email"
+                [ngModel]="student.email"
+                name="email"
+                #email="ngModel"
+                required
+                >
+        <span class="text-danger" *ngIf="!email.valid && email.touched">
+            Campo obligatorio
+        </span>
+    </fieldset>
+
+    <button type="submit" [disabled]="!form.valid"
+            class="mt-2 btn btn-primary">Send</button>
+</form> -->
+
+<!-- FORMULARIOS EXPLICITOS -->
+
+<form class="mt-5" [formGroup]="form" (ngSubmit)="sendForm()">
+    <fieldset class="form-group">
+        <label for="name">Name</label>
+        <input  type="text"
+                class="form-control"
+                id="name"
+                formControlName="name">
+        <div *ngIf="!form.controls['name'].valid">
+            <span class="text-danger" *ngIf="form.controls['name'].errors['required']">El campo es requerido.</span>
+            <span class="text-danger" *ngIf="form.controls['name'].errors['pattern']">El campo debe ser minimo de 6 caracteres.</span>
+        </div>
+    </fieldset>
+    <fieldset class="form-group">
+        <label for="email">Email</label>
+        <input  type="email" 
+                class="form-control" 
+                id="email"
+                formControlName="email">
+    </fieldset>
+
+    <button type="submit" 
+            class="mt-2 btn btn-primary"
+            [disabled]="!form.valid">Send</button>
+   
+</form>

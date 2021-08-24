@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "crudemployees-d877a": {
+      "hosting": {
+        "CRUDAngular": [
+          "crudemployees-d877a"
+        ]
+      }
+    }
+  }
+}

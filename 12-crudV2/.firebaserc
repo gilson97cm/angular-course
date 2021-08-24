@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "crudemployees-d877a": {
+      "hosting": {
+        "crudV2": [
+          "crudemployees-d877a"
+        ]
+      }
+    }
+  }
+}

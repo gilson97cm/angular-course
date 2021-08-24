@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <base href="/">
+    <title>Aprende Angular 2 Fácilmente</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <!-- 1. Cargar las librerias -->
+     <!-- Polyfill(s) para los navegadores antiguos -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/reflect-metadata/Reflect.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <script src= "node_modules/@popperjs/core/dist/umd/popper.js"
+    ></script>
+
+    <link rel="stylesheet" href="node_modules/bootswatch/dist/vapor/bootstrap.css">
+    <!-- 2. Configuración de SystemJS -->
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+    <style>
+      body{
+        background: #f2f2f2;
+      }
+    </style>
+  </head>
+  <!-- 3. Mostrar nuestra aplicación -->
+  <body >
+    <my-app>Cargando...</my-app>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<div [style.padding]="padding ? 40 : 0">
+    <h3>{{title}}</h3>
+    <div *ngIf="students.length > 0" >
+        <ul>
+            <li *ngFor="let student of students">
+                <span (click)="clickOnStudent($event)">{{student}}</span>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="students.length == 0" >
+        <span>No hay ningun estudiante</span>
+    </div>
+    <!-- <img src="https://picsum.photos/255" [class.img-rounded] = "rounded" /> -->
+    <!-- <input type="text" [(ngModel)]="title" /> -->
+    <input type="text" [value]="title" (input)=change($event) />
+    <button class="btn btn-info" (click)="title = ''">Limpiar</button>
+</div>

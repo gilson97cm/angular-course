@@ -1,0 +1,11 @@
+<div class="container m-5">
+    <h1>About Us</h1>
+    <h6>Lista de Empleados</h6>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item" 
+            *ngFor="let employee of employees"
+            (click)="selectedEmployee(employee)">
+            {{employee.id}} - {{employee.name}}
+        </li>
+    </ul>
+</div>
